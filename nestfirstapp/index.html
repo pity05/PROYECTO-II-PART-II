@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\nestfirstapp\css\styles.css">
+    <title>Administration</title>
+</head>
+<body>
+    <main> 
+        <h1>Panel Administrativo</h1>
+        <form id="objetoForm">
+            <label for="tipo">Tipo de Objeto:</label>
+            <select id="tipo" required>
+                <option value="imagen">Imagen</option>
+                <option value="titulo">Título</option>
+                <option value="servicio">Servicio</option>
+                <option value="logo">Logo</option>
+            </select>
+            
+            <label for="id">ID:</label>
+            <input type="text" id="id" required>
+            
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" required>
+    
+            <button type="button" id="agregar">Agregar</button>
+            <button type="button" id="eliminar">Eliminar</button>
+        </form>
+
+    
+    </main>
+    <script src="/nestfirstapp/js/admi.js"></script>
+</body>
+</html>
