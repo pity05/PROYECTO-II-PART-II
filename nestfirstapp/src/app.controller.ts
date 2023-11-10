@@ -1,12 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post , Body,} from '@nestjs/common';
 import { AppService } from './app.service';
+import { ObjetoService } from './Objeto/Objeto.service';
+import { Objeto } from './Objeto/Objeto.entity';
 
-@Controller()
+@Controller('/Api')
+
+
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly objetoService: ObjetoService ) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): Promise<Objeto[]> {
+   return this.objetoService.findAll();
+  }
+
+  @Post('/create')
+  InsertData(@Body() datos : Objeto) : Promise<Objeto> {
+
+    return this.objetoService.create(datos);
   }
 }
+
