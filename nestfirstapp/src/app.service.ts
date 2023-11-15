@@ -6,6 +6,10 @@ export class AppService {
     return 'Hola Putos!!';
   }
 
+  getById(id: string): string {
+    return 'Dato' + id;
+  }
+
 
   DatosDelaBD( datos : string): string{
 

@@ -3,7 +3,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Objeto } from './Objeto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-
+import { UpdateObjetoDto } from './dto/update-objeto.dto';
 
 @Injectable()
 export class ObjetoService {
@@ -18,7 +18,20 @@ export class ObjetoService {
     return this.ObjetoRepository.find();
   }
 
-  async create(task: Objeto): Promise<Objeto> {
-    return this.ObjetoRepository.save(task);
+
+  findOne(id: number) {
+    return this.ObjetoRepository.findOneBy({id});
+  }
+
+  async create(objeto: Objeto): Promise<Objeto> {
+    return this.ObjetoRepository.save(objeto);
+
+  }
+  async update(id: number, updateObjetoDto: UpdateObjetoDto) {
+    return await this.ObjetoRepository.update(id, updateObjetoDto);
+  }
+
+  async remove(id: number) {
+    return await this.ObjetoRepository.softDelete(id);
   }
 }
