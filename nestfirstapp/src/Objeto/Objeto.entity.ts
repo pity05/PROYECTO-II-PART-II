@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, DeleteDateColumn } from 'typeorm';
 
 @Entity()
 export class Objeto {
@@ -8,6 +8,11 @@ export class Objeto {
   @Column({ length: 500 })
   titulo: string;
 
+  @Column()
+  tipo: string;
+  
+  @DeleteDateColumn() // Agrega esta línea para admitir eliminaciones suaves
+  deletedAt: Date;
   // @Column('text')
   // description: string;
 

@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
 const Objeto_service_1 = require("./Objeto/Objeto.service");
 const Objeto_entity_1 = require("./Objeto/Objeto.entity");
+const update_objeto_dto_1 = require("./Objeto/dto/update-objeto.dto");
+const common_2 = require("@nestjs/common");
 let AppController = class AppController {
     constructor(appService, objetoService) {
         this.appService = appService;
@@ -27,6 +29,16 @@ let AppController = class AppController {
     }
     InsertData(datos) {
         return this.objetoService.create(datos);
+    }
+    getById(id) {
+        return this.appService.getById(id);
+    }
+    update(id, updateobjeatoDto) {
+        return this.objetoService.update(id, updateobjeatoDto);
+    }
+    async remove(id, res) {
+        await this.objetoService.remove(id);
+        res.json({ message: 'Objeto eliminado correctamente' });
     }
 };
 exports.AppController = AppController;
@@ -43,8 +55,31 @@ __decorate([
     __metadata("design:paramtypes", [Objeto_entity_1.Objeto]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "InsertData", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", String)
+], AppController.prototype, "getById", null);
+__decorate([
+    (0, common_1.Patch)('/update/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, update_objeto_dto_1.UpdateObjetoDto]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)('/remove/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_2.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "remove", null);
 exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)('/Api'),
+    (0, common_1.Controller)('Api'),
     __metadata("design:paramtypes", [app_service_1.AppService, Objeto_service_1.ObjetoService])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map

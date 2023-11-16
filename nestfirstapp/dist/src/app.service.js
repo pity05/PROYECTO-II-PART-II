@@ -12,6 +12,9 @@ let AppService = class AppService {
     getHello() {
         return 'Hola Putos!!';
     }
+    getById(id) {
+        return 'Dato' + id;
+    }
     DatosDelaBD(datos) {
         var mensaje = datos;
         return mensaje;

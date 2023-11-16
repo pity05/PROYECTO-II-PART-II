@@ -9,28 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Objeto = void 0;
-const typeorm_1 = require("typeorm");
-let Objeto = class Objeto {
-};
-exports.Objeto = Objeto;
+exports.UpdateObjetoDto = void 0;
+const class_validator_1 = require("class-validator");
+class UpdateObjetoDto {
+}
+exports.UpdateObjetoDto = UpdateObjetoDto;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], Objeto.prototype, "id", void 0);
+], UpdateObjetoDto.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 500 }),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], Objeto.prototype, "titulo", void 0);
+], UpdateObjetoDto.prototype, "tipo", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], Objeto.prototype, "tipo", void 0);
-__decorate([
-    (0, typeorm_1.DeleteDateColumn)(),
-    __metadata("design:type", Date)
-], Objeto.prototype, "deletedAt", void 0);
-exports.Objeto = Objeto = __decorate([
-    (0, typeorm_1.Entity)()
-], Objeto);
-//# sourceMappingURL=Objeto.entity.js.map
+], UpdateObjetoDto.prototype, "titulo", void 0);
+//# sourceMappingURL=update-objeto.dto.js.map

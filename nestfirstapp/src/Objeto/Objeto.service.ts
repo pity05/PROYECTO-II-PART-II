@@ -13,13 +13,11 @@ export class ObjetoService {
   ) {}
 
 
-
   async findAll(): Promise<Objeto[]> {
     return this.ObjetoRepository.find();
   }
 
-
-  findOne(id: number) {
+  findOne(id: number):Promise<Objeto> {
     return this.ObjetoRepository.findOneBy({id});
   }
 
@@ -27,11 +25,12 @@ export class ObjetoService {
     return this.ObjetoRepository.save(objeto);
 
   }
-  async update(id: number, updateObjetoDto: UpdateObjetoDto) {
-    return await this.ObjetoRepository.update(id, updateObjetoDto);
+
+  async update(id: number, updateObjetoDto: UpdateObjetoDto): Promise<void> {
+    await this.ObjetoRepository.update(id, updateObjetoDto);
   }
 
-  async remove(id: number) {
-    return await this.ObjetoRepository.softDelete(id);
-  }
+  async remove(id: number): Promise<void> {
+    await this.ObjetoRepository.softDelete(id);
+}
 }

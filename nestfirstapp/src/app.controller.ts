@@ -3,9 +3,9 @@ import { AppService } from './app.service';
 import { ObjetoService } from './Objeto/Objeto.service';
 import { Objeto } from './Objeto/Objeto.entity';
 import { UpdateObjetoDto} from './Objeto/dto/update-objeto.dto';
-@Controller('/Api')
+import { Res } from '@nestjs/common';
 
-
+@Controller('Api')
 export class AppController {
   constructor(private readonly appService: AppService, private readonly objetoService: ObjetoService ) {}
 
@@ -16,7 +16,6 @@ export class AppController {
 
   @Post('/create')
   InsertData(@Body() datos : Objeto) : Promise<Objeto> {
-
     return this.objetoService.create(datos);
   }
 
@@ -25,14 +24,17 @@ export class AppController {
     return this.appService.getById(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: number, @Body() updateobjeatoDto:UpdateObjetoDto) {
-  return this.objetoService.update(id, updateobjeatoDto);
+  @Patch('/update/:id')  // Agrega el parámetro de ruta ":id"
+  update(@Param('id') id: number, @Body() updateobjeatoDto: UpdateObjetoDto) {
+    return this.objetoService.update(id, updateobjeatoDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: number) {
-  return this.objetoService.remove(id);
+  @Delete('/remove/:id')
+  async remove(@Param('id') id: number, @Res() res): Promise<void> {
+    // Lógica para eliminar el objeto
+    await this.objetoService.remove(id);
+    res.json({ message: 'Objeto eliminado correctamente' });
   }
+  
 }
 

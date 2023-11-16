@@ -2,6 +2,8 @@
   "dependencies": {
     "@nestjs/common": "^10.2.8",
     "@nestjs/testing": "^10.2.8",
+    "class-validator": "^0.14.0",
+    "cors": "^2.8.5",
     "supertest": "^6.3.3"
   },
   "devDependencies": {
