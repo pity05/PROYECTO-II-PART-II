@@ -108,7 +108,7 @@ async function apiCall(url, data, method) {
 
     if (!text.trim()) {
       console.warn("Respuesta vacía del servidor");
-      return null; // Puedes devolver null u otro valor predeterminado según tus necesidades
+      return null; 
     }
 
     return JSON.parse(text);
