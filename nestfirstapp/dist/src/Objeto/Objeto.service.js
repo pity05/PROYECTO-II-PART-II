@@ -24,8 +24,17 @@ let ObjetoService = class ObjetoService {
     async findAll() {
         return this.ObjetoRepository.find();
     }
-    async create(task) {
-        return this.ObjetoRepository.save(task);
+    findOne(id) {
+        return this.ObjetoRepository.findOneBy({ id });
+    }
+    async create(objeto) {
+        return this.ObjetoRepository.save(objeto);
+    }
+    async update(id, updateObjetoDto) {
+        await this.ObjetoRepository.update(id, updateObjetoDto);
+    }
+    async remove(id) {
+        await this.ObjetoRepository.softDelete(id);
     }
 };
 exports.ObjetoService = ObjetoService;
